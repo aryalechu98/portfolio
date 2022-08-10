@@ -14,15 +14,14 @@ import Divider from '@material-ui/core/Divider'
 import List from '@material-ui/core/List'
 import  ListItem  from '@material-ui/core/ListItem'
 import { useState } from 'react'
-import DownloadIcon from '@material-ui/icons/ArrowDownward'
 
 const navigationLinks=[
     {name:'Home',href:'#home',},
-    {name:'Skills',href:'',},
+    {name:'Skills',href:'#skills',},
     {name:'Projects',href:'#projects',},
-    {name:'Education',href:'',},
-    {name:'Certificates',href:'',},
-    {name:'Contact',href:'',}
+    {name:'Education',href:'#education',},
+    {name:'Certificates',href:'#certificates',},
+    {name:'Contact',href:'#contact',}
 
 ]
 
@@ -64,6 +63,7 @@ const Navbar = () => {
                 variant='button'
                 underline='none'
                 className={styles.link}
+                href={item.href}
                 >{item.name}</Link>
             
         ))}
@@ -92,7 +92,7 @@ const Navbar = () => {
             <ListItem>
             <Link key={item.href} 
             color='textPrimary'
-            
+            href={item.href}
             variant='button'
             underline='none'
             className={styles.link}
