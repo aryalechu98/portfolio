@@ -20,7 +20,7 @@ section:{
    
     height:'90vh',
    position:'relative',
-   padding:'2rem 0'
+   padding:'2rem '
 },
 content:{
     height:'100%',

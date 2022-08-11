@@ -56,8 +56,8 @@ const Skills = () => {
     
   const styles=useStyles();
   return (
-    <div className={styles.wrapper} >
-        <Container maxWidth='md' id='skills' className={styles.container}>
+    <div className={styles.wrapper} id='skills'>
+        <Container maxWidth='md'  className={styles.container}>
           <Box >
             <Typography className={styles.title}>Skills</Typography>
             </Box>

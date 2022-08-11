@@ -1,4 +1,5 @@
 import React from 'react'
+import Education from './components/Education/Education'
 import Intro from './components/Intro/Intro'
 
 import Navbar from './components/Navbar'
@@ -11,6 +12,7 @@ const App = () => {
       <Navbar/>
       <Intro/>
       <Skills/>
+      <Education/>
     </div>
   )
 }

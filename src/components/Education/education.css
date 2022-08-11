@@ -1,0 +1,27 @@
+.typoContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.typoLast{
+    margin-top: 2rem;
+}
+@media screen and (max-width:600px) {
+    .typo{
+       
+        min-width:300px;
+        display: flex;
+        flex-direction:column ;
+       gap:10px;
+    }
+   
+}
+@media screen  and (min-width:601px){
+    .typo{
+        min-width:650px;
+        display: flex;
+        flex-direction:row ;
+        justify-content: space-between;
+    }
+
+}

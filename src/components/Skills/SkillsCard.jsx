@@ -1,7 +1,7 @@
 import React from 'react'
 import Box from '@material-ui/core/Box'
-import {FaHtml5,FaSass,FaGit, FaCss3} from 'react-icons/fa'
-import {SiJavascript,SiCss3,SiReact,SiRedux,SiBootstrap,SiMaterialui, SiSass} from 'react-icons/si'
+import {FaHtml5,FaSass,} from 'react-icons/fa'
+import {SiJavascript,SiCss3,SiReact,SiRedux,SiBootstrap,SiMaterialui,SiGit } from 'react-icons/si'
 
 import {makeStyles} from '@material-ui/core/styles'
 import { Container } from '@material-ui/core'
@@ -47,7 +47,7 @@ const SkillsCard = (props) => {
             case 'Material UI':
                 return <SiMaterialui className={styles.icon}/>
             case 'GIT':
-                return <FaGit className={styles.icon}/>
+                return <SiGit className={styles.icon}/>
             default:
                 return <FaHtml5 className={styles.icon}/>
         }
