@@ -14,13 +14,15 @@ import Divider from '@material-ui/core/Divider'
 import List from '@material-ui/core/List'
 import  ListItem  from '@material-ui/core/ListItem'
 import { useState } from 'react'
-
+import ToggleOffOutlinedIcon from '@mui/icons-material/ToggleOffOutlined';
+import ToggleOnOutlinedIcon from '@mui/icons-material/ToggleOnOutlined';
+import {useSelector,useDispatch} from 'react-redux'
+import { toggleActions } from '../store/toggle-slice'
 const navigationLinks=[
     {name:'Home',href:'#home',},
     {name:'Skills',href:'#skills',},
-    {name:'Projects',href:'#projects',},
     {name:'Education',href:'#education',},
-    {name:'Certificates',href:'#certificates',},
+    {name:'Projects',href:'#projects',},
     {name:'Contact',href:'#contact',}
 
 ]
@@ -28,19 +30,30 @@ const navigationLinks=[
 const useStyles=makeStyles((theme)=>({
     navLeft:{
         marginRight:'auto',
+        cursor:'pointer'
     },
     link:{
         marginRight:20,
-        cursor:'pointer'
+        cursor:'pointer',
+        color:'#EAD4D2'
     },
     icon:{
         position:'absolute',
         top:'10px',
        right:'20px',
+       color:'#EAD4D2'
     },
     list:{
         marginTop:"40px",
     },
+    span:{
+        fontSize:'1.5rem',
+    },
+    toggle:{
+        display:'flex',
+        transform:'scale(1.3)',
+        cursor:'pointer',
+    }
    
 }))
 
@@ -48,37 +61,56 @@ const useStyles=makeStyles((theme)=>({
 const Navbar = () => {
     const styles=useStyles();
     const [open,setOpen]=useState(false)
+    const isDark=useSelector(state=>state.toggle.isDark)
+    const dispatch=useDispatch();
+    const toggleHandle=()=>{
+        dispatch(toggleActions.setDark())
+    }
   return (
-    <AppBar position='sticky' color='default' >
+    <AppBar position='sticky' style={{background :'#4B1B1B',color:'#EAD4D2'}} >
     <Container maxWidth='md'>
         <Toolbar>
-        <div className={styles.navLeft}>
-        <Typography >Arya</Typography>
+        <div className={styles.navLeft} id='/' >
+        
+            <Typography style={{display:'flex',fontWeight:'bold'}} ><span className={styles.span} style={{color:'#D99255'}}>A</span><span>R</span></Typography>
+        
         </div>
         <Hidden xsDown>
-        {navigationLinks.map((item)=>(
+        {navigationLinks.map((item)=>{
+            return(
            
-                <Link key={item.href}
-                color='textPrimary'
-                variant='button'
-                underline='none'
-                className={styles.link}
-                href={item.href}
-                >{item.name}</Link>
+                <div>
+                    <Link key={item.href}
+                    color='#EAD4D2'
+                    variant='button'
+                    underline='none'
+                    className={styles.link}
+                    href={item.href}
+                    >{item.name}</Link>
+                    
+                </div>
+                
+                
             
-        ))}
+        )})}
         </Hidden>
+        <div className={styles.toggle} onClick={toggleHandle}>
+                        {!isDark && <ToggleOffOutlinedIcon/>}
+                        {isDark && <ToggleOnOutlinedIcon/>}
+                    </div>
         <Hidden smUp>
-            <IconButton>
+            <IconButton style={{color:'#EAD4D2'}}>
                 <MenuIcon onClick={()=>setOpen(true)}/>
             </IconButton>
         </Hidden>
         </Toolbar>
     </Container>
-    <SwipeableDrawer position='relative' anchor='right' open={open} onOpen={()=>setOpen(true)} onClose={()=>setOpen(false)}>
-        <div className={styles.icon}>
+    <SwipeableDrawer
+   
+    position='relative' anchor='right' open={open} onOpen={()=>setOpen(true)} onClose={()=>setOpen(false)}>
+        <div className={styles.icon}  >
             <IconButton>
-                <ChevronRightIcon onClick={()=>setOpen(false)}/>
+                <ChevronRightIcon style={{color:'#4B1B1B'}} onClick={()=>setOpen(false)}/>
             </IconButton>
         </div>
         <div className="divider">
@@ -91,7 +123,7 @@ const Navbar = () => {
         {navigationLinks.map((item)=>(
             <ListItem>
             <Link key={item.href} 
-            color='textPrimary'
+            style={{color:'#4B1B1B'}}
             href={item.href}
             variant='button'
             underline='none'

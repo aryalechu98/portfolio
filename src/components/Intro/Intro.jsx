@@ -12,6 +12,7 @@ import Zoom from '@material-ui/core/Zoom'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import DownloadIcon from '@material-ui/icons/CloudDownloadOutlined'
+import {useSelector} from 'react-redux'
 
 
 
@@ -20,7 +21,17 @@ section:{
    
     height:'90vh',
    position:'relative',
-   padding:'2rem '
+   padding:'2rem ',
+   background:'#fff',
+   color:'#4B1B1B'
+
+},
+darkMode:{
+    height:'90vh',
+    position:'relative',
+    padding:'2rem ',
+    background:'#EAD4D2',
+    color:'#4B1B1B'
 },
 content:{
     height:'100%',
@@ -37,14 +48,15 @@ subTitle:{
 },
 btn:{
     width:'12rem',
-    color:'white',
+   
   padding:' 0.5rem 2rem',
   borderRadius: '34px',
   fontSize: '16px',
   border: 'none',
   outline:'none',
-  background: 'linear-gradient(180deg,#fdc50f 26.71%, #fb982f 99.36%)',
-  boxShadow:'0px 20px 24px 3px rgba(251,161,40,0.42)' ,
+//   background: 'linear-gradient(to right top, #d47727, #e18e1f, #eaa715, #efc10a, #f0dc0d)',
+  boxShadow:'0px 20px 24px 3px rgba(217,146,85,0.42)' ,
+  background:'#D99255',
   transition:' all 0.5s ease-out',
   marginBottom:'40px',
  
@@ -52,19 +64,20 @@ btn:{
     '&:hover':{
         background: 'white',
         
-        color: 'orange',
-        border:' 1px solid orange',
+        color: '#D99255',
+        border:' 1px solid #D99255',
     }
 },
 resume:{
     textDecoration:'none',
-    color:'white',
+ color:'#EAD4D2',
+   
     fontWeight:'bold',
     display:'flex',
     justifyContent:'space-between',
     gap:'10px',
     '&:hover':{
-        color:'orange'
+        color:'#D99255'
     }
 }
 
@@ -77,8 +90,9 @@ const Intro = () => {
     useEffect(()=>
         setShouldShow(true)
     )
+    const isDark=useSelector(state=>state.toggle.isDark)
   return (
-    <Paper className={styles.section} id='home'>
+    <Paper className={isDark ? styles.darkMode : styles.section} id='home'>
        
        
         <Container className={styles.container} maxWidth='md'>

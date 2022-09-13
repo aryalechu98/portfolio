@@ -11,33 +11,44 @@ import TimelineContent from '@mui/lab/TimelineContent'
 import TimelineSeparator from '@mui/lab/TimelineSeparator'
 import TimelineDot from '@mui/lab/TimelineDot'
 import './education.css'
+import { Box } from '@mui/material'
+import {useSelector} from 'react-redux'
 
 const useStyles=makeStyles(theme=>({
     section:{
-   
-      
        position:'relative',
        padding:'2rem '
     },
+    darkMode:{
+        position:'relative',
+        padding:'2rem ',
+        background:'#EAD4D2',
+        color:'#4B1B1B'
+    },
     content:{
+        
         height:'100%',
         zIndex:'100',
         position:'relative',
     },
     timeline:{
         display:'flex',
-        justifyContent:'flex-start'
+        justifyContent:'flex-start',
+
     },
     timelineContent:{
         width:'100%',
-        border:'2px solid red'
+        border:'2px solid red',
+        
     },
     border:{
         border:'2px solid red',
         display:'flex',
         justifyContent:'start',
         width:'60vw',
-        position:'relative'
+        position:'relative',
+      
+
     },
     typo:{
         display:'flex',
@@ -47,31 +58,37 @@ const useStyles=makeStyles(theme=>({
 }))
 
 const Education = () => {
+  const isDark=useSelector(state=>state.toggle.isDark)
+
     const styles=useStyles();
   return (
     <div id='education'>
-        <Paper className={styles.section}>
+        <Paper className={isDark? styles.darkMode : styles.section}>
             <Container maxWidth='md' >
                 <Grid className={styles.content} container alignItems='center' justifyContent='space-between'>
                     <Grid item sm={8}>
                     <Typography component='h1' variant='h3'>
                         Education
                     </Typography>
-                    <Timeline >
-                        <Grid container>
-                            <Grid item sm={4}>
+                    <Timeline className='timeline'>
+                        <Grid container spacing={2}>
+                            <Grid item xm={12} md={12} >
                                 <TimelineItem width="100%">
-                                    <TimelineSeparator>
-                                        <TimelineDot/>
-                                        <TimelineConnector/>
-                                    </TimelineSeparator>
+                                    <TimelineSeparator   >
+                                        <TimelineDot />
+                                        <TimelineConnector />
+                                    </TimelineSeparator >
         
                                     <TimelineContent>
                                         <Grid item className='typoContainer'direction='row' sm={12}>
-                                            <div className='typo'>
-                                                <Typography variant='h5' className='typoHeading'>Electronics And Communication Engineering</Typography>
+                                            <Box className='typo'
+                                             style={{maxWidth:{md:'300px'}}}
+                                            >
+                                                <Typography variant='h5' className='typoHeading'
+                                               
+                                                >Electronics And Communication Engineering</Typography>
                                                 <Typography variant='h5' className='typoHeading'>2016 -2020</Typography>
-                                            </div>
+                                            </Box>
                                             <div className='typo'>
                                                 <Typography variant='h6'>Heera College of Engineering And Technology</Typography>
                                                 <Typography variant='h6'>Trivandrum,Kerala</Typography>
